@@ -59,13 +59,13 @@
       <!-- Content -->
       <div class="h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
         <nav class="hs-accordion-group p-3 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
-          <ul class="flex flex-col space-y-1">
+          <ul class="flex flex-col space-y-1" id="list-user">
             @foreach ($users  as $user)
-                <li>
-                <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:bg-neutral-700 dark:text-white" href="#">
-                    <img src="https://ui-avatars.com/api/?name={{$user->name}}&rounded=true&background=random&size=50" alt="" srcset="">
-                    {{$user->name}}
-                </a>
+                <li data-id="{{$user->id}}" >
+                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:bg-neutral-700 dark:text-white" href="#">
+                        <img src="https://ui-avatars.com/api/?name={{$user->name}}&rounded=true&background=random&size=50" alt="" srcset="">
+                        {{$user->name}}
+                    </a>
                 </li>
             @endforeach
   
@@ -81,7 +81,7 @@
     <!-- Chat Bubble -->
         <div class="flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
             {{-- Messages --}}
-            <ul class="space-y-5">
+            <ul class="space-y-5" id="chat-container">
                 <!-- Chat -->
                 <li class="max-w-lg flex gap-x-2 sm:gap-x-4 me-11">
                   <img class="inline-block size-9 rounded-full" src="https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80" alt="Avatar">
@@ -92,24 +92,6 @@
                       <h2 class="font-medium text-gray-800 dark:text-white">
                         How can we help?
                       </h2>
-                      <div class="space-y-1.5">
-                        <p class="mb-1.5 text-sm text-gray-800 dark:text-white">
-                          You can ask questions like:
-                        </p>
-                        <ul class="list-disc list-outside space-y-1.5 ps-3.5">
-                          <li class="text-sm text-gray-800 dark:text-white">
-                            What's Preline UI?
-                          </li>
-              
-                          <li class="text-sm text-gray-800 dark:text-white">
-                            How many Starter Pages & Examples are there?
-                          </li>
-              
-                          <li class="text-sm text-gray-800 dark:text-white">
-                            Is there a PRO version?
-                          </li>
-                        </ul>
-                      </div>
                     </div>
                     <!-- End Card -->
               
@@ -152,52 +134,12 @@
                 </li>
                 <!-- End Chat -->
               
-                <!-- Chat Bubble -->
-                <li class="max-w-lg flex gap-x-2 sm:gap-x-4 me-11">
-                  <img class="inline-block size-9 rounded-full" src="https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80" alt="Avatar">
-              
-                  <div>
-                    <!-- Card -->
-                    <div class="bg-white border border-gray-200 rounded-2xl p-4 space-y-3 dark:bg-neutral-900 dark:border-neutral-700">
-                      <p class="text-sm text-gray-800 dark:text-white">
-                        Preline UI is an open-source set of prebuilt UI components based on the utility-first Tailwind CSS framework.
-                      </p>
-                      <div class="space-y-1.5">
-                        <p class="text-sm text-gray-800 dark:text-white">
-                          Here're some links to get started
-                        </p>
-                        <ul>
-                          <li>
-                            <a class="text-sm text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500 dark:hover:text-blue-400" href="../docs/index.html">
-                              Installation Guide
-                            </a>
-                          </li>
-                          <li>
-                            <a class="text-sm text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500 dark:hover:text-blue-400" href="../docs/frameworks.html">
-                              Framework Guides
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <!-- End Card -->
-              
-                    <span class="mt-1.5 flex items-center gap-x-1 text-xs text-red-500">
-                      <svg class="shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" x2="12" y1="8" y2="12"></line>
-                        <line x1="12" x2="12.01" y1="16" y2="16"></line>
-                      </svg>
-                      Not sent
-                    </span>
-                  </div>
-                </li>
-                <!-- End Chat Bubble -->
+                
             </ul>
               <!-- End Chat Bubble -->
             
             {{-- Button submit --}}
-            <div>
+            <div class="mt-5">
                 <label for="hs-trailing-button-add-on" class="sr-only">Label</label>
                 <div class="flex rounded-lg shadow-sm">
                   <input type="text" id="hs-trailing-button-add-on" name="hs-trailing-button-add-on" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-s-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
@@ -210,4 +152,115 @@
 
   </div>
   <!-- ========== END MAIN CONTENT ========== -->
+
+
+  @section('scripts')
+
+<script>
+    // Global variable
+    let receiverUserId = null
+    let currentChannel = null
+
+
+    // const Ably = require('ably');
+    idUser = "`{{auth()->user()->id}}`"
+    const ably = new Ably.Realtime.Promise({
+        key:"KJUreA.FvK9VQ:HDjMxVeDttguApy4OxBcnChUsmMQbSboscq29rBCsXQ"
+    });
+    ably.connection.on((stateChange) => {
+        console.log(stateChange.current)
+    })
+    let listUser = $('#list-user')
+    // console.log(listUser);
+    listUser.on('click', 'li', function(e){
+        receiverUserId = $(this).attr('data-id')
+        listUser.find('li').removeClass('selected-list')
+        $(this).addClass('selected-list')
+
+        // Ajax request
+        $.ajax({
+            url: '/check-channel',
+            method: 'GET',
+            data: {recipientId: receiverUserId},
+            success: function(response){
+                if(response.channelExist){
+                    // Get the channel name
+                    let channelName = response.channelName
+
+                    // Suscribe to the existing channel
+                    suscribeToChannel(channelName)
+                }else{
+                    // Channel doesn't exist, create a new channel
+                    createNewChannel(receiverUserId)
+                }
+            },
+            error: function(xhr, status, error){
+                console.log(error);
+                
+            }
+        })
+    })
+
+    function createNewChannel(receiverUserId){
+        console.log(receiverUserId);
+        
+        $.ajax({
+            url: '/create-channel',
+            method: 'GET',
+            data: {recipientId: receiverUserId},
+            success: function(response){
+                if(response.success){
+                    suscribeToChannel(response.channelName)
+                }else{
+                    console.log(response.error);
+                }
+            }
+        })
+    }
+
+    function suscribeToChannel(channelName){
+        if(currentChannel){
+            currentChannel.unsubscribe()
+        }
+        currentChannel = ably.channels.get(channelName)
+        currentChannel.subscribe("first", (message) => {
+            console.log("Message received: " + message.data)
+            displayMessage(message, recipientName)
+        });
+
+        // show the chat container
+        $('#chat-container').html('')
+    }
+    // async function publishSubscribe() {
+
+    // // Connect to Ably with your API key
+    // const ably = new Ably.Realtime("KJUreA.FvK9VQ:HDjMxVeDttguApy4OxBcnChUsmMQbSboscq29rBCsXQ")
+    // ably.connection.once("connected", () => {
+    //     console.log("Connected to Ably!")
+    // })
+
+    // Create a channel called 'get-started' and register a listener to subscribe to all messages with the name 'first'
+    // const channel = ably.channels.get("get-started")
+    // await channel.subscribe("first", (message) => {
+    //     console.log("Message received: " + message.data)
+    // });
+
+    // // Publish a message with the name 'first' and the contents 'Here is my first message!'
+    // await channel.publish("first", "Here is my first message!")
+
+    // // Close the connection to Ably after a 5 second delay
+    // setTimeout(async () => {
+    //     ably.connection.close();
+    //     await ably.connection.once("closed", function () {
+    //         console.log("Closed the connection to Ably.")
+    //     });
+    // }, 5000);
+    // }
+
+    // publishSubscribe();
+
+</script>
+
+@endsection
+
 </x-app-layout>

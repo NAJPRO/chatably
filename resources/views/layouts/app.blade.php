@@ -13,9 +13,14 @@
 
         {{-- Cdn Ably js --}}
         <script src="https://cdn.ably.com/lib/ably.min-1.js"></script>
-
+        {{-- <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script> --}}
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <style>
+            .selected-list{
+                background-color: #f3f4f6;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -35,5 +40,11 @@
                 {{ $slot }}
             </main>
         </div>
+
+        {{-- Jquery --}}
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+        {{-- <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script> --}}
+        @yield('scripts')
     </body>
 </html>
