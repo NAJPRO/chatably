@@ -18,7 +18,7 @@ Avant de commencer, assurez-vous d'avoir installé les outils suivants :
 Clonez ce projet dans votre répertoire local :
 
 ```bash
-git clone https://github.com/votre-utilisateur/chatably.git
+git clone git@github.com:NAJPRO/chatably.git
 cd chatably
 ```
 
