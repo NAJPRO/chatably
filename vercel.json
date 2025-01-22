@@ -1,18 +1,36 @@
 {
-    "version": 2,
-    "framework": null,
-    "builds": [
-      {
-        "src": "public/index.php",
-        "use": "@vercel/php"
-      },
-      {
-        "src": "resources/**/*",
-        "use": "@vercel/static"
-      }
-    ],
-    "routes": [
-      { "src": "/(.*)", "dest": "public/index.php" }
-    ]
+  "version": 2,
+  "builds": [
+    {
+      "src": "public/index.php",
+      "use": "@vercel/php"
+    },
+    {
+      "src": "resources/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "public/index.php"
+    },
+    {
+      "src": "/storage/(.*)",
+      "dest": "/storage/$1"
+    },
+    {
+      "src": "/.env",
+      "dest": "/.env"
+    }
+  ],
+  "env": {
+    "APP_KEY": "@app_key",
+    "DB_CONNECTION": "mysql",
+    "DB_HOST": "@db_host",
+    "DB_PORT": "@db_port",
+    "DB_DATABASE": "@db_database",
+    "DB_USERNAME": "@db_username",
+    "DB_PASSWORD": "@db_password"
   }
-  
+}
